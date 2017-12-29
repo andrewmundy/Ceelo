@@ -5,6 +5,7 @@
     color: white;
     font-size:3rem;
     margin:0;
+    text-shadow: -4px 4px 0 #0000001a;
   }
   h2{
     color: #ffffff80;
@@ -13,7 +14,9 @@
     font-size: 1rem;
   }
   h3{
-    color: #ffffff80;
+    color: #fff;
+    text-shadow: -2px 2px 0 #ffffff4d;
+
   }
   a{
     cursor: pointer;
@@ -29,7 +32,10 @@
     display:grid;
     grid-template-columns: auto 280px auto;
   }
-
+  .rules{
+    text-align: left;
+    padding:1rem;
+  }
   #dice{
     text-align: center;
   }
