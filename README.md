@@ -7,7 +7,7 @@ Infact the name comes from the Chinese Sì-Wŭ-Liù (四五六), meaning "four-f
 ### 1. Throw a dollar in the pot
 ### 2. Keep Rolling until you have a score, then pass to the next player
 ### 3. Once everyone has their score, the player with the highest score wins
-## 4. ✨ Money Get ✨
+### 4. ✨ Money Get ✨
 
 ## How to Score
 - ### 4-5-6 
