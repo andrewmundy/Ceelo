@@ -6,7 +6,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "poi",
+    "dev": "poi",
     "build": "poi build",
     "report": "poi build --bundle-report",
     "serve": "serve dist --single"
