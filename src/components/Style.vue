@@ -39,6 +39,15 @@
     text-align: center;
     padding-top: 8rem;
   }
+  .players span input, .players span span{
+    background: rgba(0, 0, 0, 0.137);
+    border: none;
+    border-radius: 5px;
+    margin: 0.2rem;
+    padding: 0.5rem;
+    color: white;
+    width: 50%;
+  }
   .rules-button{
     cursor: pointer;
     background: rgba(0, 0, 0, 0.07);

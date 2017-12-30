@@ -3,7 +3,7 @@
       <div>
         <!-- <a @click="show"><h4>Rules</h4></a> -->
             <div class="rules">
-                <a href="https://en.wikipedia.org/wiki/Cee-lo"><button class="rules-button">Cee-lo Wiki</button></a>
+                <a href="https://en.wikipedia.org/wiki/Cee-lo" target="_blank"><button class="rules-button">Cee-lo Wiki</button></a>
             </div>
       </div>
   </div>

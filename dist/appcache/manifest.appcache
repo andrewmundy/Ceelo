@@ -1,28 +1,28 @@
 CACHE MANIFEST
-#ver:12/29/2017, 8:21:20 PM
+#ver:12/29/2017, 11:20:45 PM
 #plugin:4.9.0
 
 CACHE:
-/client.45815453.js
+/client.5c382819.js
 /vendor.716c9345.js
-/manifest.0eb6c108.js
-/client.8917ffe1.css
+/manifest.d95719cf.js
+/client.eab8b399.css
 /vendor.653da357.css
-/dice/1.svg
 /dice/2.svg
+/dice/1.svg
 /dice/1.png
 /dice/2.png
 /dice/3.svg
 /dice/4.svg
 /dice/3.png
-/dice/4.png
-/dice/5.png
 /dice/5.svg
 /dice/6.svg
-/dice/Dice.sketch
-/icons/android-chrome-512x512i.png
-/manifest.json
+/dice/4.png
 /dice/6.png
+/dice/Dice.sketch
+/dice/5.png
+/manifest.json
+/icons/android-chrome-512x512i.png
 /favicon.ico
 /icons/android-chrome-512x512.png
 /
