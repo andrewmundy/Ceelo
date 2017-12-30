@@ -1,14 +1,14 @@
 <template>
     <div id='dice'>
         <a @click="roll" v-bind:style="rolling[1]" class="die">
-            <img v-bind:class="dice1.glow" v-bind:src="'../dice/' + dice1.num + '.svg'">
-            <img v-bind:class="dice2.glow" v-bind:src="'../dice/' + dice2.num + '.svg'">
-            <img v-bind:class="dice3.glow" v-bind:src="'../dice/' + dice3.num + '.svg'">
+            <img v-bind:class="dice1.glow" v-bind:src="'../src/components/dice/' + dice1.num + '.svg'">
+            <img v-bind:class="dice2.glow" v-bind:src="'../src/components/dice/' + dice2.num + '.svg'">
+            <img v-bind:class="dice3.glow" v-bind:src="'../src/components/dice/' + dice3.num + '.svg'">
         </a>
         <a v-bind:style="rolling[0]" class="die">
-            <img class="spun" v-bind:src="'../dice/' + dice1.num + '.svg'">
-            <img class="spun" v-bind:src="'../dice/' + dice2.num + '.svg'">
-            <img class="spun" v-bind:src="'../dice/' + dice3.num + '.svg'">
+            <img class="spun" v-bind:src="'../src/components/dice/' + dice1.num + '.svg'">
+            <img class="spun" v-bind:src="'../src/components/dice/' + dice2.num + '.svg'">
+            <img class="spun" v-bind:src="'../src/components/dice/' + dice3.num + '.svg'">
         </a>
         <br>
         <h3>{{message}}</h3>
