@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver:12/29/2017, 8:13:48 PM
+#ver:12/29/2017, 8:21:20 PM
 #plugin:4.9.0
 
 CACHE:
@@ -11,19 +11,19 @@ CACHE:
 /dice/1.svg
 /dice/2.svg
 /dice/1.png
-/dice/3.svg
 /dice/2.png
-/dice/3.png
+/dice/3.svg
 /dice/4.svg
+/dice/3.png
+/dice/4.png
+/dice/5.png
 /dice/5.svg
 /dice/6.svg
 /dice/Dice.sketch
-/dice/4.png
-/dice/5.png
 /icons/android-chrome-512x512i.png
+/manifest.json
 /dice/6.png
 /favicon.ico
-/manifest.json
 /icons/android-chrome-512x512.png
 /
 
