@@ -37,27 +37,37 @@
   }
   .rules{
     text-align: center;
-    padding-top: 8rem;
+    padding:1rem;
   }
-  .players span input, .players span span{
+  .player *{
     background: rgba(0, 0, 0, 0.137);
     border: none;
     border-radius: 5px;
-    margin: 0.2rem;
-    padding: 0.5rem;
     color: white;
-    width: 50%;
+    padding:10px;
+    margin:5px;
+  }
+  .player{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+  .question{
+    background:rgba(255, 255, 255, 0.39);
+    border-radius:100px;
+    font-size: 2rem;
+    
+    color:white;
+    margin:10px;
+    padding:20px
   }
   .rules-button{
     cursor: pointer;
     background: rgba(0, 0, 0, 0.07);
     border: none;
     border-radius: 5px;
-    padding: 15px 20px;
-    color: #fffffff0;
+    padding: 10px 10px;
+    color: #ffffff80;
     box-shadow: inset 0px 3px 1px #0000000d;
-    font-weight: bolder;
-    text-shadow: 0px 2px 0 #ffffff45;
   }
   #dice{
     text-align: center;

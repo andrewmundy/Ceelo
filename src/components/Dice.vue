@@ -13,18 +13,23 @@
         <br>
         <h3>{{message}}</h3>
         <div v-bind:style="beta ? 'display:none;' : ''">
-            <h3>The Pot is ${{pot}}</h3>
             {{announce}}
             <div class="players">
-                <span><span>${{players[1].winnings}}</span><input v-model="players[1].name" placeholder="player1"><span>{{players[1].score}}</span></span>
+                <span class="player">
+                    <span>${{players[1].winnings}}</span>
+                    <input v-model="players[1].name" placeholder="player1">
+                    <span>{{players[1].score}}</span>
+                </span>
                 <br>
-                <span><span>${{players[2].winnings}}</span><input v-model="players[2].name" placeholder="player2"><span>{{players[2].score}}</span></span>
-                <!-- <span><input v-model="players[3].name" placeholder="player3"><span>{{players[3].score}}</span></span>
-                <span><input v-model="players[4].name" placeholder="player4"><span>{{players[4].score}}</span></span>
-                <span><input v-model="players[5].name" placeholder="player5"><span>{{players[5].score}}</span></span> -->
+                <span class="player">
+                    <span>${{players[2].winnings}}</span>
+                    <input v-model="players[2].name" placeholder="player2">
+                    <span>{{players[2].score}}</span>
+                </span>
             </div>
+            <h3>The Pot is ${{pot}}</h3>
         </div>
-        <button class="rules-button" @click="toggle">Player Beta</button>
+        <button class="rules-button" @click="toggle">{{close}} Player Beta</button>
     </div>
 </template>
 
@@ -32,10 +37,11 @@
     export default {
         data(){
             return {
-                pot:'',
+                pot:0,
                 resetScore:0,
                 announce:"",
                 beta:1,
+                close:'',
                 turn:1,
                 players:{
                     count:2,
@@ -50,7 +56,7 @@
                         winnings:5
                     },
                 },
-                message:'touch a Die to Roll',
+                message:'Touch a Die to Roll',
                 messages: {
                     1:'Hot Dice!',
                     2:"Rollin' Rollin' Rollin'",
@@ -83,68 +89,85 @@
                     }
             }
         },
+        mounted: function() {
+            console.log("mounted")
+        },
+        updated: function () {
+            this.$nextTick(function () {
+                if(this.turn == 3){
+                    this.reset()
+                }
+            })
+        },
         methods:{
             toggle(){
-                this.beta ? this.beta = 0 : this.beta = 1;
+                if(this.beta){ 
+                    this.beta = 0;
+                    this.close = 'Close'
+                }else{
+                    this.beta = 1;
+                    this.close = '';
+                }
+                
             },
             reset(){
                 this.resetScore = 0;
-                this.players[1].score = '';
-                this.players[2].score = '';
                 this.turn = 1;
                 this.announce = '';
             },
             winner(){
                 this.resetScore = 1;
-                console.log(this.resetScore)
                 for(var i=1;i<this.players.count+1;i++){
                     if(this.players[i].score == 456){
                         this.message = (this.players[i].name + " Got CeeLo!")
+                        this.moneyDist(i)
                     }
                 }
                 if(this.players[1].score == this.players[2].score){
                     this.message = ( this.players[1].name + " Tied! " + this.players[2].name)
                 }else if(this.players[1].score > this.players[2].score){
-                    this.message = ( this.players[1].name + " wins!")
+                    console.log(this.pot)
+                    this.message = ( this.players[1].name + " wins $" +this.pot + "!")
+                    this.moneyDist(1)
                 }else if(this.players[2].score > this.players[1].score){
-                    this.message = ( this.players[2].name + " wins!")
+                    console.log(this.pot)
+                    this.message = ( this.players[2].name + " wins $" +this.pot + "!")
+                    this.moneyDist(2)
                 }
             },
-            whosTurn(){
+            moneyDist(x){
+                this.players[x].winnings = this.players[x].winnings + this.pot
+                this.pot = 0;
+            },whosTurn(){
                 this.turn++
                 if(this.turn > this.players.count){
                     return this.winner()
                 }
             },
             ante(){
-                if(this.players[1].winnings = 0){
+                if(this.pot == 0){
+                    this.players[1].winnings--
+                    this.pot++
+                    this.players[2].winnings--
+                    this.pot++
+                                    this.players[1].score = '';
+                this.players[2].score = '';
+                }else if(this.players[1].winnings == 0){
                     this.message = (this.players[1].name +", you lose")
-                }else if(this.players[2].winnings = 0){
+                }else if(this.players[2].winnings == 0){
                     this.message = (this.players[2].name +", you lose")
                 }
-                this.players[1].winnings = this.players[1].winnings - 1
-                this.pot++
-                this.players[2].winnings = this.players[2].winnings - 1
-                this.pot++
             },
             roll(){
-                console.log(" ")
-                console.log(this.resetScore)
-                console.log("initialize roll() turn:" + this.turn)
+                this.ante()
                 var self = this; // Assign this to self to use in scoped function
                 var turn = self.turn
-
-                // this.ante()
 
                 self.rolling[1] = self.rolling[0]; // Hide first dice
                 self.rolling[0] = ''; // Show second rolling dice
                 this.message = this.messages[Math.floor(Math.random()*12)+1]; //display a message while rolling
 
                 setTimeout(function(){ // set timeout for 3 second roll
-                    if(self.resetScore){
-                        console.log("reset")
-                        self.reset()
-                    }
                     // Random dice 
                     console.log("rolling " + "turn:" + turn + " player-count:" + self.players.count)
                     self.dice1.num = Math.floor(Math.random()*6)+1;
@@ -173,6 +196,11 @@
                             self.dice2.glow = 'glow';
                             self.dice3.glow = 'glow';
                             self.message = `Triple ${self.dice1.num}'s! Next player rolls.`
+                            if(self.players[turn].score = 1){
+                                self.players[turn].score = (self.players[turn].score + "1" + "1")
+                            }else if(self.players[turn].score = 2){
+                                self.players[turn].score = (self.players[turn].score + "2" + "2")
+                            }
                             self.players[turn].score = self.dice1.num*3;
                             self.whosTurn()
                         }else{
@@ -205,10 +233,6 @@
                     }
                     self.rolling[1] = '';
                     self.rolling[0] = 'display:none;';
-
-                    if(self.turn > self.players.count){ 
-                        self.winner()
-                    }   
                 }, 1000);
             }
         }

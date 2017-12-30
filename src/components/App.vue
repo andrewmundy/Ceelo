@@ -6,9 +6,9 @@
     <div/>
     <dice class="container"></dice>
     <div/>
-    <div/>
+    <!-- <div/>
     <rules class="container"></rules>
-    <div/>
+    <div/> -->
     <app-style></app-style>
   </div>
 </template>
