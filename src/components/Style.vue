@@ -26,6 +26,7 @@
     margin: 1rem;
     background: linear-gradient(50deg,purple,salmon);
     height: 100vh;
+    overflow:hidden;
   }
   #app {
     text-align: center;
