@@ -42,6 +42,8 @@
   .die *{
     width: 25%;
     margin: 1%;
+    box-shadow: 0px 5px 5px #0003;
+    border-radius: 10px;
   }
   .title{
     padding-bottom:2rem;
