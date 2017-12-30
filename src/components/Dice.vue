@@ -18,18 +18,18 @@
                 <span class="player">
                     <span>${{players[1].winnings}}</span>
                     <input v-model="players[1].name" placeholder="player1">
-                    <span>{{players[1].score}}</span>
+                    <img class="score-die" v-bind:src="'/dice/' + players[1].score + '.svg'">
                 </span>
                 <br>
                 <span class="player">
                     <span>${{players[2].winnings}}</span>
                     <input v-model="players[2].name" placeholder="player2">
-                    <span>{{players[2].score}}</span>
+                    <img class="score-die" v-bind:src="'/dice/' + players[2].score + '.svg'">
                 </span>
             </div>
-            <h3>The Pot is ${{pot}}</h3>
+            <h3>💰 ${{pot}} 💰</h3>
         </div>
-        <button class="rules-button" @click="toggle">{{close}} Player Beta</button>
+        <!-- <button class="rules-button" @click="toggle">{{close}} Player Beta</button> -->
     </div>
 </template>
 
@@ -40,19 +40,19 @@
                 pot:0,
                 resetScore:0,
                 announce:"",
-                beta:1,
+                beta:0,
                 close:'',
                 turn:1,
                 players:{
                     count:2,
                     1:{
-                        name:"Andrew 🍹",
-                        score:'',
+                        name:"🤖",
+                        score:0,
                         winnings:5
                     },
                     2:{
-                        name:"Alex 💇‍♀️",
-                        score:'',
+                        name:"👾",
+                        score:0,
                         winnings:5
                     },
                 },
@@ -125,6 +125,7 @@
                 }
                 if(this.players[1].score == this.players[2].score){
                     this.message = ( this.players[1].name + " Tied! " + this.players[2].name)
+                    this.moneyDist(55)
                 }else if(this.players[1].score > this.players[2].score){
                     console.log(this.pot)
                     this.message = ( this.players[1].name + " wins $" +this.pot + "!")
@@ -136,8 +137,13 @@
                 }
             },
             moneyDist(x){
-                this.players[x].winnings = this.players[x].winnings + this.pot
-                this.pot = 0;
+                if(x == 55){
+                    this.players[1].score = 0;
+                    this.players[2].score = 0;
+                }else{
+                    this.players[x].winnings = this.players[x].winnings + this.pot
+                    this.pot = 0;
+                }
             },whosTurn(){
                 this.turn++
                 if(this.turn > this.players.count){
@@ -146,12 +152,11 @@
             },
             ante(){
                 if(this.pot == 0){
-                    this.players[1].winnings--
-                    this.pot++
-                    this.players[2].winnings--
-                    this.pot++
-                                    this.players[1].score = '';
-                this.players[2].score = '';
+                    for(var i=1;i<this.players.count+1;i++){
+                        this.players[i].winnings--
+                        this.players[i].score = 0;
+                        this.pot++
+                    }
                 }else if(this.players[1].winnings == 0){
                     this.message = (this.players[1].name +", you lose")
                 }else if(this.players[2].winnings == 0){
@@ -165,11 +170,11 @@
 
                 self.rolling[1] = self.rolling[0]; // Hide first dice
                 self.rolling[0] = ''; // Show second rolling dice
-                this.message = this.messages[Math.floor(Math.random()*12)+1]; //display a message while rolling
+                // this.message = this.messages[Math.floor(Math.random()*12)+1]; //display a message while rolling
 
                 setTimeout(function(){ // set timeout for 3 second roll
                     // Random dice 
-                    console.log("rolling " + "turn:" + turn + " player-count:" + self.players.count)
+                    
                     self.dice1.num = Math.floor(Math.random()*6)+1;
                     self.dice2.num = Math.floor(Math.random()*6)+1;
                     self.dice3.num = Math.floor(Math.random()*6)+1;
@@ -180,14 +185,14 @@
                         self.dice1.glow = 'fade';
                         self.dice2.glow = 'fade';
                         self.dice3.glow = 'fade';
-                        self.message = "1-2-3 Ouch, auto lose. Next player rolls."
-                        self.players[turn].score = 0;
+                        self.message = `1-2-3 Ouch, ${self.players[turn].name} scored 0`
+                        self.players[turn].score = 123;
                         self.whosTurn()
                     }else if(allDice == "[4,5,6]"){
                         self.dice1.glow = 'glow';
                         self.dice2.glow = 'glow';
                         self.dice3.glow = 'glow';
-                        self.message = "Cee-Lo! Automatic win! Take the pot!"
+                        self.message = `${self.players[turn].name} Cee-Lo'd! Automatic win!`
                         self.players[turn].score = 666
                         self.winner()
                     }else if(self.dice1.num == self.dice2.num){
@@ -195,11 +200,11 @@
                             self.dice1.glow = 'glow';
                             self.dice2.glow = 'glow';
                             self.dice3.glow = 'glow';
-                            self.message = `Triple ${self.dice1.num}'s! Next player rolls.`
+                            self.message = `${self.players[turn].name} Got a triple ${self.dice1.num}'s!`
                             if(self.players[turn].score = 1){
-                                self.players[turn].score = (self.players[turn].score + "1" + "1")
+                                self.players[turn].score = (self.players[turn].score + 110)
                             }else if(self.players[turn].score = 2){
-                                self.players[turn].score = (self.players[turn].score + "2" + "2")
+                                self.players[turn].score = (self.players[turn].score + 220)
                             }
                             self.players[turn].score = self.dice1.num*3;
                             self.whosTurn()
@@ -207,7 +212,7 @@
                             self.dice1.glow = 'fade';
                             self.dice2.glow = 'fade';
                             self.dice3.glow = 'glow';
-                            self.message = `Your Score is a ${self.dice3.num}, Next player rolls.`
+                            self.message = `${self.players[turn].name} scored a ${self.dice3.num}`
                             self.players[turn].score = self.dice3.num
                             self.whosTurn()
                         }
@@ -215,14 +220,14 @@
                         self.dice1.glow = 'glow';
                         self.dice2.glow = 'fade';
                         self.dice3.glow = 'fade';
-                        self.message = `Your Score is a ${self.dice1.num}, Next player rolls.`
+                        self.message = `${self.players[turn].name} scored a ${self.dice1.num}`
                         self.players[turn].score = self.dice1.num
                         self.whosTurn()
                     }else if(self.dice1.num == self.dice3.num){
                         self.dice1.glow = 'fade';
                         self.dice2.glow = 'glow';
                         self.dice3.glow = 'fade';
-                        self.message = `Your Score is a ${self.dice2.num}, Next player rolls.`
+                        self.message = `${self.players[turn].name} scored a ${self.dice2.num}`
                         self.players[turn].score = self.dice2.num
                         self.whosTurn()
                     }else{
@@ -233,7 +238,7 @@
                     }
                     self.rolling[1] = '';
                     self.rolling[0] = 'display:none;';
-                }, 1000);
+                }, 3000);
             }
         }
     }

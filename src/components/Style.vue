@@ -46,6 +46,7 @@
     color: white;
     padding:10px;
     margin:5px;
+    text-align:center;
   }
   .player{
     display: grid;
@@ -59,6 +60,9 @@
     color:white;
     margin:10px;
     padding:20px
+  }
+  .score-die{
+    width: 50%;
   }
   .rules-button{
     cursor: pointer;
