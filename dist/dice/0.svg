@@ -5,21 +5,15 @@
     <desc>Created with Sketch.</desc>
     <defs>
         <linearGradient x1="0%" y1="0%" x2="101.999998%" y2="100.999999%" id="linearGradient-1">
-            <stop stop-color="#FFFFFF50" offset="0%"></stop>
-            <stop stop-color="#F5F5F550" offset="100%"></stop>
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F5F5F5" offset="100%"></stop>
         </linearGradient>
         <linearGradient x1="0%" y1="0%" x2="101.999998%" y2="100.999999%" id="linearGradient-2">
-            <stop stop-color="#F4F4F450" offset="0%"></stop>
-            <stop stop-color="#FFFFFF50" offset="100%"></stop>
-        </linearGradient>
-        <linearGradient x1="1.46974646%" y1="1.4553372%" x2="101.999998%" y2="100.999999%" id="linearGradient-3">
-            <stop stop-color="#1F1F1F50" offset="0%"></stop>
-            <stop stop-color="#29292950" offset="48.7523916%"></stop>
-            <stop stop-color="#00000050" offset="100%"></stop>
+            <stop stop-color="#F4F4F4" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
         </linearGradient>
         <linearGradient x1="15.0038088%" y1="14.7749184%" x2="88.1337955%" y2="82.7732332%" id="linearGradient-4">
-            <stop stop-color="#00000050" offset="0%"></stop>
-            <stop stop-color="#45454550" offset="100%"></stop>
+            <stop stop-color="#454545" offset="100%"></stop>
         </linearGradient>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
