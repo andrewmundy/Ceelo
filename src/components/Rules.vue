@@ -3,13 +3,11 @@
       <div>
         <!-- <a @click="show"><h4>Rules</h4></a> -->
             <div class="rules" v-bind:style="display">
-                1. Throw a dollar in the pot
+                1. Keep Rolling until you have a score, then pass to the next player
                     <br>
-                2. Keep Rolling until you have a score, then pass to the next player
+                2. Once everyone has their score, the player with the highest score wins
                     <br>
-                3. Once everyone has their score, the player with the highest score wins
-                    <br>
-                4. ✨ Money Get ✨
+                3. ✨ Money Get ✨
                     <br>
                 <h4> How to Score </h4>
                 <b>4-5-6</b> Highest possible roll Automatic Win
