@@ -20,6 +20,7 @@
   }
   a{
     cursor: pointer;
+    text-decoration: none;
   }
   body{
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -27,6 +28,7 @@
     background: linear-gradient(50deg,purple,salmon);
     height: 100vh;
     overflow:hidden;
+    overflow-y: hidden;
   }
   #app {
     text-align: center;
@@ -34,8 +36,19 @@
     grid-template-columns: auto 280px auto;
   }
   .rules{
-    text-align: left;
-    padding:1rem;
+    text-align: center;
+    padding-top: 8rem;
+  }
+  .rules-button{
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.07);
+    border: none;
+    border-radius: 5px;
+    padding: 15px 20px;
+    color: #fffffff0;
+    box-shadow: inset 0px 3px 1px #0000000d;
+    font-weight: bolder;
+    text-shadow: 0px 2px 0 #ffffff45;
   }
   #dice{
     text-align: center;
@@ -88,3 +101,9 @@
     100% {transform:rotate(360deg);}
   }
 </style>
+
+<script>
+document.ontouchmove = function (e) {
+  e.preventDefault();
+}
+</script>
