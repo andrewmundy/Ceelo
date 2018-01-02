@@ -15,13 +15,13 @@
         <div v-bind:style="beta ? 'display:none;' : ''">
             {{announce}}
             <div class="players">
-                <span class="player">
+                <span v-bind:style="this.turn == 1 ? '' : 'filter:opacity(50%)'" class="player">
                     <span>${{players[1].winnings}}</span>
                     <input v-model="players[1].name" placeholder="player1">
                     <img class="score-die" v-bind:src="'/dice/' + players[1].score + '.svg'">
                 </span>
                 <br>
-                <span class="player">
+                <span v-bind:style="this.turn == 2 ? '' : 'filter:opacity(50%)'" class="player">
                     <span>${{players[2].winnings}}</span>
                     <input v-model="players[2].name" placeholder="player2">
                     <img class="score-die" v-bind:src="'/dice/' + players[2].score + '.svg'">
@@ -100,6 +100,11 @@
             })
         },
         methods:{
+            blur(){
+                if(this.turn == 1){
+
+                }
+            },
             toggle(){
                 if(this.beta){ 
                     this.beta = 0;
@@ -164,6 +169,7 @@
                 }
             },
             roll(){
+                console.log(this.turn)
                 this.ante()
                 var self = this; // Assign this to self to use in scoped function
                 var turn = self.turn

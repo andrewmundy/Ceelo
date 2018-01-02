@@ -64,6 +64,9 @@
   .score-die{
     width: 50%;
   }
+  .blur{
+    filter: blur(2px);
+  }
   .rules-button{
     cursor: pointer;
     background: rgba(0, 0, 0, 0.07);
